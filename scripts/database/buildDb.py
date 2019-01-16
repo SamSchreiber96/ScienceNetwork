@@ -29,7 +29,7 @@ def run_sql_file(filename, connection):
     
  
 def main():    
-    connection = mdb.connect('127.0.0.1', 'root', 'root', 'socialdb')
+    connection = mdb.connect('10.168.0.6', 'admin', 'admin', 'socialdb')
 
     # Comments.sql  Followings.sql  Likes.sql  Locations.sql  Messages.sql  Posts.sql  Users.sql
     run_sql_file("Users.sql", connection)    
