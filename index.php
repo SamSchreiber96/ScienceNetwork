@@ -1,21 +1,25 @@
-<?php include 'includes/header.php'; ?>
-<?php include 'business/sql_query.php';
+<?php 
+error_reporting(E_ALL);
+ini_set('display_errors', 1); // For debugging
 
-execute_query("SELECT * FROM Users;");
+$activeUser = NULL;
 
+include 'business/database/Query.php';
+include 'business/database/ObjectLoader/UserLoader.php';
+
+if(isset($_GET["login"])) {
+    // Try to login
+    // If cannot login, error msg
+    $result = Query::areValidCredentials($_GET["email"], $_GET["password"]);
+    if ($result->num_rows == 1){
+       $activeUser = UserLoader::fetchUser($result->fetch_assoc()['user_id']);
+}
+    else
+	echo 'Invalid login credentials';
+}
+
+if ($activeUser != NULL) {
+   echo 'Welcome, User!';
+}
+include 'includes/homepage.php'; 
 ?>
-
-<div id="content">
-    <h3>Content</h3>
-
-    <?php
-    if(isset($_GET['about'])){
-	include 'includes/about.php';
-    }
-    else if(isset($_GET['discussion'])){
-    	 include 'includes/discussion.php';
-    }
-    ?>  
-</div>
-
-<?php include 'includes/footer.php'; ?>

@@ -21,14 +21,3 @@ footer{
     background: lightgrey;
 }
 
-nav u1 li{
-    list-style: none;
-    float: left;
-}
-
-nav u1 li a {
-    text-decoration: none;
-    display: block;
-    padding: 15px 10px;
-    color: white;
-}
