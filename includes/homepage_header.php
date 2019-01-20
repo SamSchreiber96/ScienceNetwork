@@ -13,7 +13,7 @@
 		<div id="header_wrapper">
 		 <div id="header">
 			 <li id="sitename"><a href="index.php">Soltech</a></li>
-			 <form action="logout.php">
+			 <form id="logout" action="logout.php">
 				 <li><input type="submit" name="login" value="Log Out"></li>
 			 </form>
 			 <ul id="tabs">
@@ -21,7 +21,7 @@
 			 	<li> 
 			 		<a href="homepage.php"><?php echo $_SESSION["first_name"]; ?></a>
 			 	</li>
-			 	
+
 			 </ul>
 			</div>
 		</div>

@@ -13,7 +13,7 @@ body
  min-width:980px;
  background-color:#01c44b;
  position: fixed;
- height:90px;
+ height:70px;
 
 }
 /* The sidenav */
@@ -65,7 +65,7 @@ body
 }
 #header #sitename
 {
- margin-top:25px;
+ margin-top:10px;
 }
 #header #sitename a
 {
@@ -75,13 +75,17 @@ body
  font-weight:900;
 }
 
+#header ul 
+{
+	margin-left:20px;
+}
 #header ul li
 {
 	font-size:20px;
 	float: left;
 	text-align: right;
 	padding-right: 5px;
-	margin-top:34px;
+	margin-top:19px;
 	margin-left: 20px;
 	color:Black;
 }
@@ -93,7 +97,6 @@ body
 #header form
 {
  float:right;
- margin-top:13;
 }
 #header form li a
 {
