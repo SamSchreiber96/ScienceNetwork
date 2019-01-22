@@ -12,7 +12,7 @@
 	<body>
 		<div id="header_wrapper">
 		 <div id="header">
-			 <li id="sitename"><a href="index.php">Soltech</a></li>
+			 <li id="sitename"><a href="homepage.php">Soltech</a></li>
 			 <form id="logout" action="logout.php">
 				 <li><input type="submit" name="login" value="Log Out"></li>
 			 </form>
