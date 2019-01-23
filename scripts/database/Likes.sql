@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS Likes(
-user_id INT(20) NOT NULL,
-post_id INT(20),
+user_id VARCHAR(20) NOT NULL,
+post_id VARCHAR(20),
 /*comment_id INT(20), */
 date_created DATE NOT NULL,
 PRIMARY KEY(user_id, post_id),

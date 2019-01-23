@@ -1,7 +1,7 @@
 REATE TABLE IF NOT EXISTS Comments (
-comment_id INT(20) NOT NULL,
-post_id INT(20) NOT NULL,
-user_id INT(20) NOT NULL,
+comment_id VARCHAR(20) NOT NULL,
+post_id VARCHAR(20) NOT NULL,
+user_id VARCHAR(20) NOT NULL,
 content TEXT NOT NULL,
 date_created DATE NOT NULL,
 date_updated DATE,

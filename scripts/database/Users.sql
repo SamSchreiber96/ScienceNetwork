@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS Users(
-user_id int(20) NOT NULL,
+user_id VARCHAR(20) NOT NULL,
 email VARCHAR(255) NOT NULL,
 username VARCHAR(25) NOT NULL,
 password VARCHAR(255) NOT NULL,
