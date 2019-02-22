@@ -30,6 +30,33 @@ def run_sql_file(filename, connection):
  
 def main():    
     connection = mdb.connect('127.0.0.1', 'admin', 'admin', 'socialdb')
+    
+    cursor = connection.cursor()
+    cursor.execute("DROP TABLE IF EXISTS Likes")
+    connection.commit()
+
+    cursor.execute("DROP TABLE IF EXISTS Posts")
+    connection.commit()
+      
+    cursor = connection.cursor()
+    cursor.execute("DROP TABLE IF EXISTS Comments")
+    connection.commit()
+      
+    cursor = connection.cursor()
+    cursor.execute("DROP TABLE IF EXISTS Locations")
+    connection.commit()
+      
+    cursor = connection.cursor()
+    cursor.execute("DROP TABLE IF EXISTS Followings")
+    connection.commit()
+
+    cursor = connection.cursor()
+    cursor.execute("DROP TABLE IF EXISTS Messages")
+    connection.commit()
+      
+    cursor = connection.cursor()
+    cursor.execute("DROP TABLE IF EXISTS Users")
+    connection.commit()
 
     # Comments.sql  Followings.sql  Likes.sql  Locations.sql  Messages.sql  Posts.sql  Users.sql
     run_sql_file("Users.sql", connection)    

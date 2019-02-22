@@ -5,13 +5,22 @@
 		header("Location: includes/homepage.php");
 	}
 
-	if (isset($_GET["error"]) && $_GET["error"] == true) {
+	else if (isset($_GET["error"]) && $_GET["error"] == true) {
 		echo 'A field in the form was left out';
 	}
 
-	if (isset($_GET["password_mismatch"]) && $_GET["password_mismatch"] == true) {
+	else if (isset($_GET["password_mismatch"]) && $_GET["password_mismatch"] == true) {
 		echo 'Passwords do not match!';
 	}
+
+	else if (isset($_GET["email_taken"]) && $_GET["email_taken"] == true) {
+		echo 'That email is currently in use.';
+	}
+
+	else if (isset($_GET["password_short"]) && $_GET["password_short"] == true) {
+		echo 'Your password must be at least 5 characters.';
+	}
+
 
 ?>
 <html>
@@ -42,7 +51,7 @@
 				<p>Don't wory, it's free!</p>
 
 				<form method="POST" action="includes/create_account.php">
-					<li><input type="text" placeholder="First Name" id="firstname" name="first+name"><input type="text" placeholder="Surname" id="surname"></li>
+					<li><input type="text" placeholder="First Name" id="firstname" name="first+name"><input type="text" placeholder="Surname" id="surname" name="last+name"></li>
 					<li><input type="text" placeholder="Email address" name="email"></li>
 					<li><input type="password" placeholder="New password" name="password"></li>
 					<li><input type="password" placeholder="Re-enter password" name="password_reenter"></li>
@@ -67,8 +76,10 @@
 						    <?php endfor; ?>
 						</select>
 					</li>
-					<li><input type="radio" name="male">Male <input type="radio" name="female">Female <br> <input type="radio" name="other">Other</li>
-					<li><input type="submit" value="Create an account" name = "create"></li>
+					<div name="gender">
+						<li><input type="radio" name="gender" value="M">Male <input type="radio" name="gender" value="F">Female <br> <input type="radio" name="gender" value="O">Other</li>
+						<li><input type="submit" value="Create an account" name = "create"></li>
+					</div>
 				</form>
 				
 			</div>

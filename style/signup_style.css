@@ -20,7 +20,7 @@ body
  padding:0px;
  height:85px;
 }
-#header li
+#header 
 {
  list-style-type:none;
  float:left;

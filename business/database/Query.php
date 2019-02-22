@@ -28,9 +28,12 @@ class Query {
 		die("Connection failed: " . $conn->connect_error);
 		} 
 
+		// Make string safe for db
+		//$clean = mysqli_real_escape_string($conn, $sql);
 		$result = $conn->query($sql);
 
 		$conn->close();
+
 		return $result;
 	}
 

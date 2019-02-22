@@ -18,4 +18,6 @@ $result = Query::execute_query("SELECT * FROM Users WHERE email='" . $_GET["emai
     	header("Location: homepage.php");
 	}else // Go back
     	header("Location: ../index.php?signin=false");
+
+    exit();
 ?>

@@ -43,6 +43,6 @@ function post_method_changed() {
 <br>
 <?php
 
-print_r($_POST);
+htmlspecialchars("<script>alert(\"Test\");</script>");
 ?>
 </div>
