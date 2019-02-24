@@ -18,7 +18,7 @@
 	<body>
 		<div id="header_wrapper">
 		 <div id="header">
-			 <li id="sitename"><a href="homepage.php">Soltech</a></li>
+			 <li id="sitename"><a href="homepage.php">Soltek</a></li>
 			 <ul id="tabs">
 			 	<li><a href="homepage.php">Home</a></li>
 			 	<li>

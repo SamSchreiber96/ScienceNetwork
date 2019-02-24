@@ -56,9 +56,40 @@ ini_set('display_errors', 1); // For debugging
 
 	$date_created = date('Y-m-d');
 
-	$sqlQuery = "INSERT INTO Users (user_id, email, username, password, first_name, last_name, gender, birth_date, date_created) VALUES('" . $user_id . "','" . $email . "','" . $username . "','" . $password . "','" . $first_name . "','" .      $last_name . "','" . $gender . "','" . $birth_date . "','"  . $date_created . "');";
+	//$sqlQuery = "INSERT INTO Users (user_id, email, username, password, first_name, last_name, gender, birth_date, date_created) VALUES('" . $user_id . "','" . $email . "','" . $username . "','" . $password . "','" . $first_name . "','" .      $last_name . "','" . $gender . "','" . $birth_date . "','"  . $date_created . "');";
 
-	Query::execute_query($sqlQuery);
+	//Query::execute_query($sqlQuery);
 
 	header("Location: login.php?email=" . $email . "&password=" . $password);
 ?>
+
+<script>
+var createAccount = function(){
+	var user = [];
+	user[user_id]='<?php echo $user_id ?>';
+	user[email]='<?php echo $email ?>';
+	user[username]='<?php echo $username ?>';
+	user[password]='<?php echo $password ?>';
+	user[first_name]='<?php echo $first_name ?>';
+	user[last_name]='<?php echo $last_name ?>';
+	user[gender]='<?php echo $gender ?>';
+	user[birth_date]='<?php echo $birth_date ?>';
+	user[date_created]='<?php echo $date_created ?>';
+	console.log('create account');
+	var u='http://localhost:7080/api/users/';
+	$.ajax({
+		url: u,
+		type: 'POST',
+		dataType: 'json',
+		data: {'data': user},
+
+		success: function(data) {
+			console.log(data);
+		},
+		error: function(request, error) {
+			console.log("Failure" + " " + error);
+		}
+	});
+
+}
+</script>

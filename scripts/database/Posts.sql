@@ -2,10 +2,9 @@ CREATE TABLE IF NOT EXISTS Posts(
 post_id VARCHAR(20) NOT NULL,
 user_id VARCHAR(20) NOT NULL,
 category VARCHAR(255),
-type ENUM('text', 'image', 'video'),
-post_url VARCHAR(255) NOT NULL,
+post_url VARCHAR(255), NOT NULL
+type ENUM('text', 'image', 'video') NOT NULL,
 date_created  DATE NOT NULL,
-dated_updated DATE,
 PRIMARY KEY (post_id),
 FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
