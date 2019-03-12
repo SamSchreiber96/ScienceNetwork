@@ -11,7 +11,7 @@ gender ENUM('M', 'F', 'O'),
 profile_picture_url VARCHAR(255),
 birth_date DATE,
 date_created DATE NOT NULL,
-field VARCHAR(25) NOT NULL,
+field VARCHAR(128) NOT NULL,
 /*FOREIGN KEY (city_id) REFERENCES Cities(city_id),*/
 /*FOREIGN KEY (country_id REFERENCES Countries(country_id),*/
 PRIMARY KEY (user_id),

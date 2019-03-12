@@ -39,7 +39,11 @@
 						</i>
 					</a>
 				</li>
-
+				<li>
+					<a id="connect-button" href="connect.php">
+					Connect
+					</a>
+				</li>
 			 </ul>
 			  <form id="logout" action="logout.php">
 				 <li><input type="submit" name="logout" value="Log Out"></li>
@@ -59,7 +63,8 @@ var nameSelected = function(event) {
 }
 
 var showResultsForQuery = function(event) {
-	window.location.href = "/includes/showSearchResults.php?" + "search=" + $('#search').val();
+	console.log("connect");
+	//window.location.href = "/includes/showSearchResults.php?" + "search=" + $('#search').val();
 }
 
 var handleQuery = function(event){
@@ -88,7 +93,7 @@ var handleQuery = function(event){
 }
 
 $("input#search").keyup(handleQuery);
-$("a#query-button").click(showResultsForQuery);
+$("a#connect-button").click(showResultsForQuery);
 
 
 </script>
