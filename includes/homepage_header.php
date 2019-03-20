@@ -13,43 +13,66 @@
 	<head>
 		<script src="../business/jQuery.js"></script>
 	<link href="../style/homepage_style.css" type="text/css" rel="stylesheet"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 	</head>
 
 	<body>
 		<div id="header_wrapper">
-		 <div id="header">
-			 <li id="sitename"><a href="homepage.php">Soltek</a></li>
+
+		 <div id="header_left">
 			 <ul id="tabs">
-			 	<li><a href="homepage.php">Home</a></li>
-			 	<li>
-			 		<a href="homepage.php"><?php echo $_SESSION["first_name"]; ?></a>
-			 	</li>
-			 	<li>
-			 		<form id="search-query">
-					 <input type="text" id="search" name="search" placeholder="Search..." list="suggestions">
-					 <datalist id="suggestions" onselect="nameSelected()">
-					 </datalist>
-
-					</form>
-				 </li>
-
-				 <li>
-					 <a id="query-button">
-						<i type="button" class="fa fa-search">
-						</i>
-					</a>
-				</li>
+				<li id="sitename"><a href="homepage.php">SolTek</a></li>
+			 	<li><a href="homepage.php">FEED</a></li>
+				<li><a>QUESTIONS</a></li>
+				<li><a>PROJECTS</a></li>
 				<li>
 					<a id="connect-button" href="connect.php">
-					Connect
+					CONNECT
 					</a>
 				</li>
-			 </ul>
-			  <form id="logout" action="logout.php">
-				 <li><input type="submit" name="logout" value="Log Out"></li>
-			 </form>
+
+				<li>
+					<a id="following-button" href="show_followings.php">
+						FOLLOWING
+					</a>
+				</li>
+			</ul>
 			</div>
+
+			<div id="header_right">
+				<ul id="tabs">
+				 	<li>
+						 <input type="text" id="search" name="search" placeholder="Search..." list="suggestions">
+						 <datalist id="suggestions" onselect="nameSelected()">
+						 </datalist>
+					 </li>
+
+					 <li>
+						 <a id="query-button">
+							<i id="query-icon" type="button" class="fas fa-search">
+							</i>
+						</a>
+					</li>
+
+					<li>
+						<a id="notification-bell">
+							<i type="button" class="fas fa-bell"></i>
+						</a>
+					</li>
+
+					<li>
+						<a id="user-button">
+							<i type="button" class="fas fa-user-circle"></i>
+						</a>
+					</li>
+					<li>
+						<a id="sign-out-button">
+							<i type="button" class="fas fa-sign-out-alt"></i>
+						</a>
+					</li>
+			 </ul>
 		</div>
+	</div>
 		<br>
 		<br>
 		<br>
@@ -94,6 +117,9 @@ var handleQuery = function(event){
 
 $("input#search").keyup(handleQuery);
 $("a#connect-button").click(showResultsForQuery);
+$("#sign-out-button").click(()=>{
+	window.location.href = "/includes/logout.php";
+})
 
 
 </script>

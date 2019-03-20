@@ -1,28 +1,26 @@
-
-#fr_ul {
-  list-style-type: none;
-  width: 500px;
+body {
+  background-color: #fff;
+}
+#fr_table {
+  margin-bottom: 10px;
+  margin: 0;
+  padding: 0;
+  display: table;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
-#fr_ul h3 {
-  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
-}
+#fr_table #fr_column {
+  background-color: #f1f9ff;
+  border-collapse: separate;
+  height: 450;
+  width: 400px;
+  margin: 0;
+  border-left-width: 10px;
+  border-right-width: 10px;
+  border-bottom-width: 4px;
+  border-top-width: 4px;
 
-#fr_ul li img {
-  float: left;
-  margin: 0 15px 0 0;
-}
-
-#fr_ul li p {
-  font: 200 12px/1.5 Georgia, Times New Roman, serif;
-}
-
-#fr_ul li {
-  padding: 10px;
-  overflow: auto;
-}
-
-#fr_ul li:hover {
-  background: #eee;
-  cursor: pointer;
+  border-color: #fff;
+  border-style: solid;
 }

@@ -2,9 +2,8 @@
 <script src="../business/jQuery.js"></script>
 
 <div>
-
-  <ul id="fr_ul">
-  </ul>
+  <table id="fr_table">
+  </table>
 </div>
 
 <script>
@@ -12,7 +11,7 @@ var loadConnections = function(){
 	var user_id='<?php echo $user_id ?>';
   console.log(user_id);
 	var u='http://localhost:7080/api/users/' + user_id + '/followrecommendations/60';
-
+  console.log(u);
 	$.ajax({
 	 	url: u,
 		type: 'GET',
@@ -20,7 +19,10 @@ var loadConnections = function(){
 
 		success: function(data) {
 			console.log(data);
+      let tr = document.createElement("tr");
+      tr.id = "fr_row";
 			for (var i in data.response) {
+        let td = document.createElement("td");
 				let name = data.response[i].first_name + ' ' + data.response[i].last_name;
         let field = data.response[i].field;
 				let id = data.response[i].user_id;
@@ -32,17 +34,29 @@ var loadConnections = function(){
         followButton.id = id;
 
         let li = document.createElement("li");
-        let h3 = document.createElement("h3");
+        let pName = document.createElement("p");
         let p = document.createElement("p");
 
         p.innerHTML =  field + " <i> (" + mutualFollowings + " mutual followings)";
-        h3.innerHTML = name;
-        li.appendChild(h3);
-        li.appendChild(p);
-        li.appendChild(followButton);
+        pName.innerHTML = name;
 
-        document.getElementById("fr_ul").appendChild(li);
+
+        td.appendChild(pName);
+        td.appendChild(p);
+        td.appendChild(followButton);
+
+        td.id = "fr_column";
+        tr.appendChild(td);
+
+        if (i % 4 == 3) {
+          document.getElementById("fr_table").appendChild(tr);
+          tr = document.createElement("tr"); // get a new row
+          tr.id = "fr_row";
+        }
 			}
+      if (tr.childElementCount > 0) {
+        document.getElementById("fr_table").appendChild(tr);
+      }
 		},
 		error: function(request, error) {
 			console.log("Failure" + " " + error);
@@ -77,7 +91,7 @@ var followUser = function(event) {
 	});
 }
 
-$("#fr_ul").click(followUser);
+$("#fr_table").click(followUser);
 
 loadConnections();
 </script>
