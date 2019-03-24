@@ -1,8 +1,14 @@
+#nf_container {
+  position: relative;
+  margin-top: 50px;;
+  margin-left: 25%;
+  z-index: 0;
+}
 #nf_container #nf_buttons {
   list-style-type: none;
   text-align: left;
-  margin: 0;
   padding: 0;
+
 }
 
 #nf_buttons li {
@@ -11,7 +17,7 @@
   margin-bottom: 15px;
 }
 #nf_container #nf_buttons li a {
-  color: #3498FF;
+  color: #FB7826;
   font-size: 15px;
   font-weight: 900;
   padding-right: 16px;
@@ -24,7 +30,6 @@
 #nf_ul {
   list-style-type: none;
   text-align: left;
-  margin: 0;
   padding: 0;
   width: 500px;
 }
@@ -33,7 +38,6 @@
   border: 1px solid #daeefe;
   box-shadow: 0 0 5px #719ece;
   resize: none;
-  margin: 0;
   float:left;
   width: 500;
   height: 150;
@@ -71,6 +75,15 @@
   word-wrap:break-word;
 }
 
+#nf_ul #user_full_name {
+  color: #FB7826;
+  font-weight: bold;
+}
+
+#nf_ul #user_full_name:hover {
+  cursor: pointer;
+}
+
 #nf_ul li i:hover {
   color: rgba(0,0,255,1);
 }
@@ -95,10 +108,24 @@
 }
 
 #header_list {
-  margin: 0;
   padding: 0;
   list-style-type: none;
   text-align: left;
+}
+
+#user-icon {
+  max-width: 100%;
+  max-height: 100%;
+  height: 32px;
+  width: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  padding: 0;
+  position: relative;
+  top: -8px;
+}
+#trash {
+  float: right;
 }
 
 #header_list li {

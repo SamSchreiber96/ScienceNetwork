@@ -1,26 +1,100 @@
-body {
-  background-color: #fff;
-}
 #fr_table {
-  margin-bottom: 10px;
-  margin: 0;
+  margin: 0 auto;
+  margin-top: 32px;
   padding: 0;
-  display: table;
-  margin-left: 15%;
-  margin-right: 15%;
+  color: #3498FF;
+  visibility: hidden;
+}
+
+#fr_spinner {
+  font-size: 40px;
+}
+#fr_table #fr_row {
+  display: flex;
+}
+#fr_table #fr_column {
+  text-align: center;
+}
+
+#fr_table #fr_column:hover {
+  box-shadow: 0 0 10px 3px #3498FF;
+  cursor: pointer;
+}
+
+
+
+#fr_table #fr_name {
+  margin-top: 80px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #FB7826;
 }
 
 #fr_table #fr_column {
-  background-color: #f1f9ff;
-  border-collapse: separate;
-  height: 450;
+  background-color: #fff;
+  height: 450px;
   width: 400px;
-  margin: 0;
-  border-left-width: 10px;
-  border-right-width: 10px;
-  border-bottom-width: 4px;
+  margin: 5px;
+  padding: 0;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
   border-top-width: 4px;
-
-  border-color: #fff;
+  border-color: #fff8f1;
   border-style: solid;
+  overflow: hidden;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+#fr_table #fr_connect_column {
+  background-color: #fff;
+  border-collapse: separate;
+  height: 450px;
+  width: 400px;
+  margin: 5px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-top-width: 4px;
+  border-color: #fff8f1;
+  border-style: solid;
+  overflow: hidden;
+  display: inline-block;
+  white-space: nowrap;
+
+  text-align: center;
+  padding: 0;
+  white-space: pre-line;
+  word-wrap:break-word;
+}
+
+#fr_table #fr_user_icon {
+  max-width: 100%;
+  max-height: 100%;
+  margin-top: 50px;
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  padding: 0;
+}
+
+#fr_table #fr_connect_header {
+  font-size: 40px;
+  margin: 0;
+  padding: 0;
+  font-family: "Times New Roman", Times, serif;
+  transform: scale(1, 1.1);
+}
+
+
+#fr_table #fr_connect_subtitle {
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-weight: bold;
+  padding-bottom: 150px;
+
 }

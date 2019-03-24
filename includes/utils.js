@@ -30,3 +30,8 @@ var postToServer = function(url, data, onSuccess, onFailure) {
     }
   });
 }
+
+var getUserIconURL = function(user_id) {
+  let url = 'http://localhost:7080/api/post/user/' + user_id + '/icon';
+  return url;
+}

@@ -7,10 +7,12 @@
 	$user_id=$_SESSION['user_id'];
 ?>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<script src="utils.js"></script>
 
 
 <html>
-	<head>
+	<head id="hp_head">
+
 		<script src="../business/jQuery.js"></script>
 	<link href="../style/homepage_style.css" type="text/css" rel="stylesheet"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
@@ -18,33 +20,33 @@
 
 	<body>
 		<div id="header_wrapper">
-
-		 <div id="header_left">
+		 <div id="header">
 			 <ul id="tabs">
-				<li id="sitename"><a href="homepage.php">SolTek</a></li>
-			 	<li><a href="homepage.php">FEED</a></li>
-				<li><a>QUESTIONS</a></li>
-				<li><a>PROJECTS</a></li>
+				<li id="sitename"><a href="homepage.php"><img id="soltek_icon"></img></a></li>
+			 	<li><a href="homepage.php" id="feed_button"><b>FEED</b></a></li>
+				<li><a id="questions_button"><b>QUESTIONS</b></a></li>
+				<li><a id="projects_button"><b>PROJECTS</b></a></li>
 				<li>
-					<a id="connect-button" href="connect.php">
-					CONNECT
+					<a id="connect_button" href="connect.php">
+					<b>CONNECT</b>
 					</a>
 				</li>
 
 				<li>
-					<a id="following-button" href="show_followings.php">
-						FOLLOWING
+					<a id="followings_button" href="show_followings.php">
+						<b>FOLLOWINGS</b>
 					</a>
 				</li>
-			</ul>
-			</div>
-
-			<div id="header_right">
-				<ul id="tabs">
 				 	<li>
-						 <input type="text" id="search" name="search" placeholder="Search..." list="suggestions">
-						 <datalist id="suggestions" onselect="nameSelected()">
-						 </datalist>
+						 <input autocomplete="off" type="text" id="search" name="search" placeholder="Search...">
+					 	 </input>
+
+						 <div id="dropdownList">
+						 		<ul id="suggestions">
+						 		</ul>
+					 	 </div>
+
+
 					 </li>
 
 					 <li>
@@ -62,7 +64,7 @@
 
 					<li>
 						<a id="user-button">
-							<i type="button" class="fas fa-user-circle"></i>
+							<img id = "user_icon"></img>
 						</a>
 					</li>
 					<li>
@@ -71,15 +73,29 @@
 						</a>
 					</li>
 			 </ul>
-		</div>
+		 </div>
 	</div>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
 
 <script>
+
+var fetchUserIcon = function() {
+	let user_id = '<?php echo $user_id ?>';
+	let url = 'http://localhost:7080/api/post/user/' + user_id + '/icon';
+	let icon = document.getElementById("user_icon");
+	icon.src=url;
+}
+
+var fetchUserIconForQueryElement = function(icon) {
+	let url = 'http://localhost:7080/api/post/user/' + icon.id + '/icon';
+	icon.src=url;
+}
+
+var fetchSoltekIcon = function() {
+	let url = 'http://localhost:7080/api/post/soltek/icon/';
+	console.log(url);
+	let icon = document.getElementById("soltek_icon");
+	icon.src=url;
+}
 
 var nameSelected = function(event) {
 	console.log("Select");
@@ -105,7 +121,31 @@ var handleQuery = function(event){
 			for (var i in data.response) {
 				let name = data.response[i].name;
 				let id = data.response[i].user_id;
-				$("<option id='" + id + "'/>").html(name).appendTo("#suggestions");
+				let li = document.createElement("li");
+				let sublist = document.createElement("ul");
+
+				let icon = document.createElement("img");
+				let p = document.createElement("p");
+
+				if (name == undefined) {
+					name = data.response[i].first_name + ' ' + data.response[i].last_name;
+				}
+				p.innerHTML = name;
+				p.id = "queryName";
+				li.id = "queryRow";
+				li.appendChild(p);
+				icon.id = id;
+
+				sublist.appendChild(icon);
+				sublist.appendChild(p);
+
+				li.appendChild(sublist);
+				let list = document.getElementById("suggestions");
+				list.appendChild(li);
+				console.log(list);
+				fetchUserIconForQueryElement(icon);
+
+				//$("<li id='" + id + "'/>").html(name).appendTo("#suggestions");
 			}
 		},
 		error: function(request, error) {
@@ -115,11 +155,14 @@ var handleQuery = function(event){
 
 }
 
+$("input#search").click(handleQuery);
 $("input#search").keyup(handleQuery);
 $("a#connect-button").click(showResultsForQuery);
 $("#sign-out-button").click(()=>{
 	window.location.href = "/includes/logout.php";
 })
-
+$("input#search").focusout(()=>{$("#suggestions").empty();});
+fetchUserIcon();
+fetchSoltekIcon();
 
 </script>

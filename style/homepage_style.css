@@ -5,17 +5,23 @@ body
  margin:0 auto;
  padding:0px;
  font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
- background: #f1f9ff;
+ background: #fff8f1;
 }
 #header_wrapper
 {
  width:100%;
  min-width:980px;
- background-color:#44a0fa;
+ background-color:#fb7826;
  position: fixed;
  height:60px;
- display: flex;
- justify-content:space-around;
+ display:flex;
+ justify-content: space-around;
+ overflow: hidden;
+ z-index: 1;
+}
+
+input::-webkit-calendar-picker-indicator {
+	display: none;
 }
 
 /* Page content */
@@ -38,61 +44,151 @@ body
  margin-left:515px;
 }
 
-#header_left
+#header
 {
  margin:0;
  float:auto;
  height: 100%;
  position: relative;
  top: -10%;
+ overflow: hidden;
 }
 
-#header_left #sitename {
-  padding-right: 50px;
+#header #sitename {
+
 }
 
-#header_right
-{
- margin:0;
- float:left;
- height: 100%;
- position: relative;
- top: -10%;
- margin-right: 100px;
-}
 
-#header_left li
+#header li
 {
  list-style-type:none;
  float:left;
  color:#ffffff;
 }
 
-#header_right li
-{
- list-style-type:none;
- float:left;
- color:#ffffff;
+#header #suggestions li {
+  position: relative;
+  width: 348px;
+  color: #FB7826;
+  font-weight: bold;
+  background-color: #fff;
+  border: 2px solid #fff;
+  height: 64;
+  border-style: solid;
 }
 
-#header_right #query-button  {
-  font-size: 13px;
+
+#dropdownList {
+  position: fixed;
 }
 
-#header_right #notification-bell  {
+#header #suggestions ul li {
+  list-style-type:none;
+  float:left;
+}
+
+#header #suggestions img {
+  position: relative;
+  height: 42px;
+  width: 42px;
+  object-fit: cover;
+  border-radius: 50%;
+  padding: 0;
+  top: -8px;
+  float: left;
+  left: -32px;
+}
+
+#followings_button {
+  margin-right: 20px;
+}
+
+#feed_button:hover {
+  background-color: #D24F00;
+}
+
+#followings_button:hover {
+  background-color: #D24F00;
+}
+
+#questions_button:hover {
+  background-color: #D24F00;
+}
+
+#projects_button:hover {
+  background-color: #D24F00;
+}
+
+#connect_button:hover {
+  background-color: #D24F00;
+}
+
+
+#header #suggestions p {
+  position: relative;
+  text-align: left;
+}
+
+#header #suggestions #queryRow:hover {
+  cursor: pointer;
+  background-color: #e1eff7;
+  border-color: #e1eff7;
+}
+
+
+#header #suggestions {
+  position: relative;
+  float: left;
+  left: -40px;
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+#header #query-button  {
+  font-size: 17px;
+  height: 12px;
+  width: 20px;
+  position: relative;
+  top: -1px;
+}
+
+#header #notification-bell  {
   font-size: 16px;
 }
 
-#header_right #sign-out-button  {
+#header #sign-out-button  {
   font-size: 16px;
 }
 
-#header_right #user-button  {
-  font-size: 16px;
+#header #user-button  {
+  text-align: center;
+}
+
+#header #user_icon {
+  position: relative;
+  height: 32px;
+  width: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  padding: 0;
+  top: -8px;
+
+}
+
+#header #soltek_icon {
+  position: relative;
+  height: 74px;
+  width: 74px;
+  object-fit: cover;
+  padding: 0;
+  top: -29px;
+
 }
 
 
-#header_left li a {
+#header li a {
   display: inline-block;
   font-size: 12px;
   color: #ffffff;
@@ -101,7 +197,7 @@ body
   text-decoration: none;
 }
 
-#header_right li a {
+#header li a {
   display: inline-block;
   font-size: 12px;
   color: #ffffff;
@@ -110,7 +206,7 @@ body
   text-decoration: none;
 }
 
-#header_right li #sign-out-button:hover
+#header li #sign-out-button:hover
 {
   cursor: pointer;
 }
@@ -127,7 +223,7 @@ li #query-button:hover
   cursor: pointer;
 }
 
-#header_right #search
+#header #search
 {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	background: #fff;
@@ -135,31 +231,32 @@ li #query-button:hover
   margin:0;
   padding: 0;
   font-size: 14px;
-  border: 2px solid #daeefe;
+  border: 2px solid #fff;
   width: 300px;
+
 }
 
 
-#header_left ul li a {
+#header ul li a {
  	text-decoration:none;
  	color:#ffffff;
 }
 
-#header_right ul li a {
+#header ul li a {
  	text-decoration:none;
  	color:#ffffff;
 }
 
-#header_right form
+#header form
 {
  float:right;
 }
-#header_right form li a
+#header form li a
 {
  color:#ffffff;
  text-decoration:none;
 }
-#header_left form input[type="text"]
+#header form input[type="text"]
 {
  margin-top:3px;
  margin-bottom:3px;
@@ -168,7 +265,7 @@ li #query-button:hover
  height:25px;
  padding-left:3px;
 }
-#header_left form input[type="password"]
+#header form input[type="password"]
 {
  margin-top:3px;
  margin-bottom:3px;

@@ -29,13 +29,15 @@ var appendToList = function(data, front=false) {
 	let like = document.createElement("i");
 	let likeCount = document.createElement("p");
 	/* Temporary icon */
-	let icon = document.createElement("i");
+	let icon = document.createElement("img");
 	let li1 = document.createElement("li");
 	let li2 = document.createElement("li");
 	let aIcon = document.createElement("a");
 	let userFullName = document.createElement("a");
+	let li3 = document.createElement("li");
+	let trash = document.createElement("i");
 
-	userFullName.id = "user-full-name";
+	userFullName.id = "user_full_name";
 	text.id = "post-content";
 
 	aIcon.appendChild(icon);
@@ -46,10 +48,13 @@ var appendToList = function(data, front=false) {
 	headerList.appendChild(li1);
 	headerList.appendChild(li2);
 
+	trash.id ="trash";
+	trash.className="fas fa-trash";
 	headerList.id = "header_list";
 
 	icon.className = "fas fa-user-circle";
 	icon.id = "user-icon";
+	icon.src = getUserIconURL(id);
 
 
 	p.innerHTML =  field;
@@ -66,6 +71,7 @@ var appendToList = function(data, front=false) {
 	li.appendChild(p);
 	li.appendChild(text);
 //	li.appendChild(like);
+	li.appendChild(trash);
 
 	element = document.getElementById("nf_ul");
 	if (!front){
