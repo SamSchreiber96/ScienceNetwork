@@ -51,7 +51,7 @@
 
 					 <li>
 						 <a id="query-button">
-							<i id="query-icon" type="button" class="fas fa-search">
+							<i id="query-icon" class="fas fa-search">
 							</i>
 						</a>
 					</li>

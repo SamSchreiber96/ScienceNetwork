@@ -68,7 +68,7 @@ input::-webkit-calendar-picker-indicator {
 
 #header #suggestions li {
   position: relative;
-  width: 348px;
+  width: 296;
   color: #FB7826;
   font-weight: bold;
   background-color: #fff;
@@ -147,11 +147,12 @@ input::-webkit-calendar-picker-indicator {
 }
 
 #header #query-button  {
-  font-size: 17px;
-  height: 12px;
-  width: 20px;
-  position: relative;
+  font-size: 16px;
+  color: #000;
   top: -1px;
+  left: -45px;
+  position: relative;
+  z-index: 1;
 }
 
 #header #notification-bell  {
@@ -211,12 +212,6 @@ input::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 
-li #query-button {
-  background-color: #3797fa;
-  border-radius: 5%;
-  margin: auto;
-  font-size: 13px;
-}
 
 li #query-button:hover
 {
@@ -233,6 +228,7 @@ li #query-button:hover
   font-size: 14px;
   border: 2px solid #fff;
   width: 300px;
+  padding-right: 40px;
 
 }
 
