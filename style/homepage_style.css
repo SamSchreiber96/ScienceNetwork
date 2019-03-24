@@ -147,9 +147,9 @@ input::-webkit-calendar-picker-indicator {
 }
 
 #header #query-button  {
-  font-size: 16px;
+  font-size: 12px;
   color: #000;
-  top: -1px;
+  top: 0px;
   left: -45px;
   position: relative;
   z-index: 1;
@@ -216,6 +216,7 @@ input::-webkit-calendar-picker-indicator {
 li #query-button:hover
 {
   cursor: pointer;
+  background-color: #F5F5F5;
 }
 
 #header #search
