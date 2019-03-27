@@ -15,6 +15,7 @@
 
 <script>
 
+var likeElementsClicked = new Set();
 var appendToList = function(data, front=false) {
 	let name = data.first_name + ' ' + data.last_name;
 	let field = data.field;
@@ -28,7 +29,6 @@ var appendToList = function(data, front=false) {
 	let text = document.createElement("p");
 	let like = document.createElement("i");
 	let likeCount = document.createElement("p");
-	/* Temporary icon */
 	let icon = document.createElement("img");
 	let li1 = document.createElement("li");
 	let li2 = document.createElement("li");
@@ -37,6 +37,7 @@ var appendToList = function(data, front=false) {
 	let li3 = document.createElement("li");
 	let trash = document.createElement("i");
 
+	likeCount.id = 'like_count';
 	userFullName.id = "user_full_name";
 	text.id = "post-content";
 
@@ -61,7 +62,10 @@ var appendToList = function(data, front=false) {
 	text.innerHTML = content;
 	like.className = "fas fa-thumbs-up";
 	like.id = "like";
-	likeCount.innerHTML = "0"
+	likeCount.innerHTML = "0";
+	likeCount.className=data.post_id;
+	getLikesForElement(data.post_id, likeCount);
+	handleIfUserLikesPost(data.post_id, like);
 	like.appendChild(likeCount);
 
 
@@ -70,7 +74,7 @@ var appendToList = function(data, front=false) {
 	//li.appendChild(document.createElement("br"));
 	li.appendChild(p);
 	li.appendChild(text);
-//	li.appendChild(like);
+	li.appendChild(like);
 	li.appendChild(trash);
 
 	element = document.getElementById("nf_ul");
@@ -83,6 +87,24 @@ var appendToList = function(data, front=false) {
 }
 
 
+var getLikesForElement = function(post_id, likeCount){
+	var u='http://localhost:7080/api/post/likes/' + post_id;
+	getFromServer(u, (response) => {
+			console.log("Count: " + response.count);
+			likeCount.innerHTML = response.count;
+	}, (error) => {console.log("Failure" + " " + error);});
+}
+
+var handleIfUserLikesPost = function(post_id, thumbsUp){
+	var user_id='<?php echo $user_id ?>';
+	var u='http://localhost:7080/api/post/user/' + user_id + '/like/' + post_id;
+	getFromServer(u, (response) => {
+			if (response.likes) {
+				thumbsUp.style.color = "#00F";
+				likeElementsClicked.add(thumbsUp);
+			}
+	}, (error) => {});
+}
 
 var loadNewsFeed = function(){
 	var user_id='<?php echo $user_id ?>';
@@ -93,6 +115,35 @@ var loadNewsFeed = function(){
 			appendToList(response.data[i]);
 		}
 	}, (error) => {console.log("Failure" + " " + error);});
+}
+
+var likeOrUnlikePost = function(post_id, countElement=undefined) {
+	let user_id='<?php echo $user_id ?>';
+	let url='http://localhost:7080/api/post/user/' + user_id + '/like/' + post_id;
+	postToServer(url, undefined, (response) => {
+		if (countElement == undefined) {
+			return;
+		}
+
+		if (response.posted==true){
+			countElement.innerHTML = parseInt(countElement.innerHTML) + 1;
+			countElement.parentElement.style.color = "#00F";
+			likeElementsClicked.add(countElement.parentElement);
+		}
+		else {
+			url='http://localhost:7080/api/post/user/' + user_id + '/unlike/' + post_id;
+			postToServer(url, undefined, (response) => {
+				if (response.posted==true){
+					countElement.innerHTML = parseInt(countElement.innerHTML) - 1;
+					countElement.parentElement.style.color = "#3498FF";
+				}
+				likeElementsClicked.delete(countElement.parentElement);
+			});
+		}
+	},
+	(error)=> {
+
+	});
 }
 
 var postNewsFeed = function() {
@@ -115,5 +166,24 @@ var postNewsFeed = function() {
 
 loadNewsFeed();
 $("#share").click(postNewsFeed);
+$('#nf_ul').on('click', '#like', function(e){
+	let element = $(this).find('#like_count')[0];
+	let post_id = element.className;
+	console.log(element);
+	likeOrUnlikePost(post_id, element);
+});
+
+$('#nf_ul').on('mouseenter', '#like', function(e) {
+	let element = $(this)[0];
+	element.style.color = "#00F";
+});
+
+$('#nf_ul').on('mouseleave', '#like', function(e) {
+	let element = $(this)[0];
+	if (likeElementsClicked.has(element)) {
+		return;
+	}
+	element.style.color = "#3498FF";
+});
 
 </script>

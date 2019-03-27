@@ -96,6 +96,7 @@ var loadConnections = function(){
 }
 
 var followUser = function(event) {
+  console.log('click');
   let follow_id = $(event.target).attr('class');
 
   if (follow_id == undefined) {
@@ -121,7 +122,7 @@ var followUser = function(event) {
 	});
 }
 
-$("#fr_row").click(followUser);
+$("#fr_table").click(followUser);
 
 loadConnections();
 </script>
