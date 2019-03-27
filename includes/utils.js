@@ -35,3 +35,7 @@ var getUserIconURL = function(user_id) {
   let url = 'http://localhost:7080/api/post/user/' + user_id + '/icon';
   return url;
 }
+
+var timestampToLocalDate = function(timestamp) {
+  return new Date(+timestamp).toLocaleString("en-US", {timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone});
+}

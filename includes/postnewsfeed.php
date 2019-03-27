@@ -19,6 +19,9 @@ var likeElementsClicked = new Set();
 var appendToList = function(data, front=false) {
 	let name = data.first_name + ' ' + data.last_name;
 	let field = data.field;
+	var date = timestampToLocalDate(data.date_created);
+
+	console.log(data.date_created + " Date: " + date);
 	let id = data.user_id;
 	let content = '\n' + data.content;
 	console.log(content);
@@ -58,7 +61,7 @@ var appendToList = function(data, front=false) {
 	icon.src = getUserIconURL(id);
 
 
-	p.innerHTML =  field;
+	p.innerHTML =  field + ' (<i>' + date + '</i>)';
 	text.innerHTML = content;
 	like.className = "fas fa-thumbs-up";
 	like.id = "like";
